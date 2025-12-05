@@ -1,0 +1,18 @@
+.env
+
+venv2/
+venv2/*
+
+venc/
+venc/*
+
+*.pyc
+__pycache__/
+*.log
+*.sqlite3
+.DS_Store
+
+# Media files
+media/
+media/*
+!media/.gitkeep

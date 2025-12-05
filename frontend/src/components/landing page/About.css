@@ -1,0 +1,274 @@
+/* General container styles */
+.area,.about {
+  padding: 20px 0;
+  margin: 20px auto;
+  border-radius: 12px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* About container styles */
+.about-container {
+  padding: 20px;
+  margin:  auto;
+  overflow: hidden;
+  max-width: 1200px; /* Set a max-width for better responsiveness */
+  text-align: center;
+}
+
+/* Title styles */
+.about h2, .about-container h2 {
+  margin-top: 60px;
+  font-size: 3.5em;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .about h2, .dark-mode .about-container h2 {
+  color: #3aa99e;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Paragraph styles */
+.about p, .about-container p {
+  font-size: 1em;
+  color: #333;
+  line-height: 2;
+}
+.about p{
+  font-size: 1.05em;
+  font-weight:500;
+}
+.dark-mode .about p, .dark-mode .about-container p {
+  color: #ddd;
+}
+
+/* Card styles */
+.about-card {
+  background-color: transparent;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  padding: 20px;
+  text-align: left;
+  /* border: 1px solid #888; */
+}
+.about-card strong{
+  color: #04aaa2;
+  font-weight:600;
+}
+.linkon:hover{
+  color: #6a6b6b;
+  text-anchor: end;
+}
+
+/* .dark-mode .about-card {
+  border: 1px solid #555; */
+/* } */
+
+/* Card subtitle styles */
+.about-card h3 {
+  font-size: 2em;
+  color: #107067;
+  margin-bottom: 20px;
+}
+
+.dark-mode .about-card h3 {
+  color: #3aa99e;
+}
+
+/* Team section styles */
+.team-section {
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.dark-mode .team-section {
+  color: #f8f9fa;
+}
+
+/* Team member styles */
+.team-member {
+  align-items: center;
+  background-color: #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 250px;
+  margin: 10px;
+  /* border: 1px solid #777; */
+  
+  display: flex;
+  flex-direction: column; /* Change to column for vertical alignment */
+  align-items: center; /* Center align items */
+  text-align: center; /* Center align text */
+}
+
+.dark-mode .team-member {
+  background-color: #555;
+  /* border: 1px solid #888; */
+}
+
+/* Team member image styles */
+.team-member img {
+  width: 120px; /* Adjust size for better appearance */
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  /* border: 3px solid #107067; Add a border for a more polished look */
+}
+.team-member img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.5px 2px 20px rgb(255, 255, 255);
+}
+.dark-mode .team-member img:hover {
+  box-shadow: 0.5px 2px 20px rgb(255, 255, 255);
+}
+
+/* Values section styles */
+.values-section {
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.dark-mode .values-section {
+  color: #f8f9fa;
+}
+
+/* Values styles */
+.values, .team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.value {
+  text-align: center;
+  background-color: #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 250px;
+  margin: 10px;
+  /* border: 1px solid #777; */
+}
+
+.dark-mode .value {
+  background-color: #555;
+  /* border: 1px solid #888; */
+}
+
+/* Value icon styles */
+.value img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+/*---Sprinkle Animation*/
+/* Anchor link styling */
+.linkon {
+  position: relative;
+  overflow: hidden; /* Prevent sparkles from overflowing */
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Sprinkle animation on hover */
+.linkon:hover::before  {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+  z-index: -1;
+  animation: sparkle 0.6s ease-out infinite;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+/* Add multiple sparkles */
+.linkon:hover::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #04aaa2;
+  border-radius: 50%;
+  z-index: -1;
+  animation: sparkle-magic 0.8s ease-out infinite;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+/* Define sprinkle animations */
+@keyframes sparkle {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(calc(-50% + 15px), calc(-50% - 15px)) scale(0.5);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(calc(-50% - 20px), calc(-50% + 20px)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-magic {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(calc(-50% - 20px), calc(-50% + 20px)) scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(calc(-50% + 25px), calc(-50% - 25px)) scale(0);
+    opacity: 0;
+  }
+}
+
+.btn-whatsapp {
+  background-color: #107067; /* WhatsApp green */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: semi-bold;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-whatsapp:hover {
+  background-color: #25D366; /* Slightly darker green for hover */
+  color:fff;
+}
+
+.whatsapp-button {
+  text-decoration: none; /* Remove underline for the link */
+}
+
+.btn-whatsapp svg {
+  font-size: 18px; /* Adjust the icon size */
+}

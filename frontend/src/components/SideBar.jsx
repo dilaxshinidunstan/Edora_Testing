@@ -1,0 +1,137 @@
+import React, { useState } from 'react';
+import { GrResources } from "react-icons/gr";
+import { MdOutlineQuiz, MdOutlineChatBubbleOutline } from "react-icons/md";
+import { FaUserAstronaut } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import ConfimationModal from './ConfimationModal';
+import SuccessMessage from './messages/SuccessMessage';
+import { IoGameControllerOutline } from "react-icons/io5";
+import { TbLayoutSidebarFilled } from "react-icons/tb";
+
+const SideBar = ({ open, setOpen }) => {
+    const [selectedMenu, setSelectedMenu] = useState('');
+    const [isDeleteChatModalOpen, setIsDeleteChatModalOpen] = useState(false);
+    const [success, setSuccess] = useState('')
+    
+    const navigate = useNavigate()
+
+    const menus = [
+        { name: "General English", key: 'chatbot', icon: MdOutlineChatBubbleOutline, path: '/generalchat' },
+        { name: "Past Papers", key: 'pastpapers', icon: GrResources, path: '/pastpapercard' },
+        { name: "Quiz", key: 'quiz', icon: MdOutlineQuiz, path: '/quiz/start'},
+        { name: "Idol Talks", key: 'historicalCharacter', icon: FaUserAstronaut, path: '/idol/card' },
+        { name: "Play", key: 'play', icon: IoGameControllerOutline, path: '/game/card' },
+    ];
+
+    const handleSidebarClick = () => {
+        setOpen(!open)
+    }
+
+    const handleMenuClick = (menu) => {        
+        navigate(menu.path);
+        setSelectedMenu(menu.key);
+    };
+    
+
+    return (
+        <>
+            {/* Menu Button - Always Visible */}
+            <div className='fixed top-0 left-0 mt-16 py-2 px-2 z-40 '>
+            <div className={`py-2 px-2 hover:text-primary text-dark_gray`}>
+                <TbLayoutSidebarFilled 
+                    size={24} 
+                    className='cursor-pointer block' 
+                    onClick={handleSidebarClick} 
+                />
+            </div>
+            </div>
+
+            {/* Desktop Sidebar */}
+            <div className='fixed h-full top-0 left-0 mt-16 z-40 hidden sm:block'>
+                {success && <SuccessMessage message={success} />}
+                <div className={`bg-secondary h-full ${open ? "w-80" : "w-16"} duration-500 text-dark_gray px-4 absolute top-0 left-0 ${
+                        open ? 'shadow-lg' : ''
+                    }`}>
+                    <div className='py-5 flex justify-end'>
+                        <TbLayoutSidebarFilled 
+                            size={24} 
+                            className='cursor-pointer block' 
+                            onClick={handleSidebarClick} 
+                        />
+                    </div>
+                    <div className='mt-4 flex flex-col gap-4 relative z-40'>
+                        {
+                            menus.map((menu, i) => (
+                                <div key={i}>
+                                    <div
+                                        onClick={() => handleMenuClick(menu)}
+                                        className={`group flex items-center gap-3.5 text-sm p-2 hover:bg-soft_cyan rounded-md cursor-pointer ${selectedMenu === menu.key ? 'bg-soft_cyan' : ''}`}
+                                    >           
+                                        <div className='font-semibold'>
+                                            {React.createElement(menu.icon, { size: '18' })}
+                                        </div>
+                                        <h2 className={`font-semibold whitespace-pre ${!open && 'opacity-0 overflow-hidden'}`}>{menu.name}</h2>
+                                        <h2
+                                            className={`${open && 'hidden'} absolute whitespace-pre left-48 bg-gray-800 text-xs text-secondary rounded-md px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit z-60`}
+                                        >
+                                            {menu.name}
+                                        </h2>
+                                    </div>
+                                    {
+                                        isDeleteChatModalOpen && (
+                                        <ConfimationModal
+                                            isOpen={isDeleteChatModalOpen}
+                                            onClose = {() => setIsDeleteChatModalOpen(false)}
+                                            onConfirm = {handleDeleteConfirm}
+                                            message = "Are you sure you want to delete this chat session?"
+                                            confirmText = "yes"
+                                            cancelText = "No"
+                                        />
+                                        )
+                                    }
+                
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className={`fixed inset-0 z-40 mt-16 sm:hidden ${open ? 'block' : 'hidden'}`}>
+                <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setOpen(false)}></div>
+                <div className="absolute inset-y-0 left-0 max-w-80 overflow-y-auto overflow-x-hidden w-full bg-secondary h-full shadow-lg transform transition-transform duration-300">
+                    <div className='p-4 flex justify-end items-center border-b border-gray-200'>
+                        <TbLayoutSidebarFilled 
+                            size={24} 
+                            className='cursor-pointer' 
+                            onClick={() => setOpen(false)} 
+                        />
+                    </div>
+                    <div className='mt-4 flex flex-col gap-4 p-4'>
+                        {menus.map((menu, i) => (
+                            <div key={i}>
+                                <div
+                                    onClick={() => handleMenuClick(menu)}
+                                    className={`group flex items-center gap-3.5 text-sm p-2 hover:bg-soft_cyan rounded-md cursor-pointer ${selectedMenu === menu.key ? 'bg-soft_cyan' : ''}`}
+                                >
+                                    <div className='font-semibold'>
+                                        {React.createElement(menu.icon, { size: '18' })}
+                                    </div>
+                                    <h2 className={`font-semibold whitespace-pre ${!open && 'opacity-0 overflow-hidden'}`}>{menu.name}</h2>
+                                    <h2
+                                        className={`${open && 'hidden'} absolute whitespace-pre left-48 bg-gray-800 text-xs text-secondary rounded-md px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit z-60`}
+                                    >
+                                        {menu.name}
+                                    </h2>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div> 
+            </div>
+        </>
+    );
+};
+
+export default SideBar;

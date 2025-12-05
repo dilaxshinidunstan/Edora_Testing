@@ -1,0 +1,20 @@
+.env
+
+venv2
+
+*.pyc
+
+staticfiles
+
+static
+
+Dockerfile.dev
+
+# Exclude specific migration files
+chat/migrations/0004_remove_chat_learner.py
+chat/migrations/0005_chat_learner.py
+
+# Media files
+media/
+media/*
+!media/.gitkeep

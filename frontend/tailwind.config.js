@@ -1,0 +1,45 @@
+import tailwindScrollbar from 'tailwind-scrollbar';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html","./src/**/*.{html,js,jsx}"],
+  theme: {
+    extend: {
+      height: {
+        'custom-lg': '32rem'
+      },
+      width: {
+        'custom-lg': '28rem'
+      },
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+      },
+      colors: {
+        'primary': '#04aaa2',
+        'secondary': '#e6fafb',
+        'white': '#FFFFFF',
+        'strong_cyan': '#04bdb4',
+        'light_gray': '#fbfafb',
+        'dark_gray': '#2d3137',
+        'soft_cyan': '#b4f2ef',
+        'bright_blue': '#382fed',
+        'light_red': '#fae8e8',
+        'strong_red': '#cb2c2c',
+        'dodger_blue': '#37b5fe'
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'], // Add Poppins font
+      },
+    },
+    letterSpacing: {
+      widest: '1em'
+    }
+  },
+  plugins: [
+    tailwindScrollbar,
+  ],
+}
+

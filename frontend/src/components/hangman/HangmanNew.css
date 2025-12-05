@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+body {
+    /* background: #E6FFFD; Light background color */
+    color: #011918; /* Dark text color for contrast */
+    margin: 0;
+    font-family: "Poppins", sans-serif; /* Updated font */
+}
+
+.Hangman {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 80vh;
+    padding: 1rem;
+}
+
+.Hangman-title {
+    font-size: 3vw; /* Scales with viewport width */
+    font-weight: 600;
+    color: #048581;
+    text-align: center;
+}
+
+.Hangman-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    min-height: inherit;
+}
+
+.Hangman-flex div {
+    text-align: center;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.Hangman-reset {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 50%;
+}
+
+.Hangman-reset select {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.55em 0.7em;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem; /* Adjusted for readability */
+    background-color: #3DBFB9;
+    color: #E6FFFD;
+    border: none;
+    border-radius: 5px;
+}
+
+.Hangman img {
+    max-width: 500px;
+    height: auto;
+}
+
+.Hangman-word {
+    letter-spacing: 1em;
+    margin: 0.4em -1em 0.2em 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* .btns {
+    text-align: center;
+    display: inline-block;
+    width: 250px;
+    margin-top: 0;
+} */
+
+/* .Hangman hangman_button {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 30px;
+    margin: 5px 2px;
+    letter-spacing: 1px;
+    outline: none;
+    background: #048581;
+    color: #E6FFFD;
+    box-shadow: 0 4px #03615E;
+    border-radius: 5px;
+    padding-top: 4px;
+} */
+
+/* Ensure modal buttons are styled separately */
+.modal-button {
+    border: none; /* Reset any border */
+    font-family: inherit; /* Use the same font */
+    font-size: 1rem; /* Adjust font size as needed */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.Hangman hangman_button:hover {
+    background-color: #023D3B;
+}
+
+.Hangman hangman_button:disabled {
+    background: #B0BEC5;
+    color: #EEEEEE;
+    box-shadow: 0 4px #9E9E9E;
+}
+
+#reset {
+    width: auto;
+    display: block;
+    margin: 2rem auto;
+    background: #76D4D0;
+    box-shadow: 0 4px #48A9A7;
+    color: #011918;
+    border: none;
+    border-radius: 5px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#reset:hover {
+    background: #48A9A7;
+}
+
+/* Responsive font adjustments */
+@media (min-width: 1200px) {
+    .Hangman-title {
+        font-size: 2rem; /* Larger font size for wide screens */
+    }
+    .Hangman-word {
+        font-size: 2.5rem;
+    }
+    .Hangman button {
+        font-size: 1.2rem;
+        width: 35px;
+    }
+    #reset {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .Hangman-title {
+        font-size: 6vw; /* Adjusts to fit smaller screens */
+    }
+    .Hangman-word {
+        font-size: 1.8rem;
+    }
+    .btns {
+        width: 100%;
+    }
+    .Hangman button {
+        width: 28px;
+        font-size: 0.9rem;
+        padding-top: 3px;
+    }
+    #reset {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .Hangman-title {
+        font-size: 7vw; /* Slightly larger on very small screens */
+    }
+    .Hangman-word {
+        font-size: 1.5rem;
+    }
+    .btns {
+        width: 100%;
+    }
+    .Hangman button {
+        width: 25px;
+        font-size: 0.8rem;
+    }
+    #reset {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.9rem;
+    }
+}
+.Hangman-wrong {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #D32F2F; /* Red color to highlight wrong guesses */
+}
+
+.Hangman-warning {
+  font-size: 1.1rem;
+  color: #048581; /* Default warning color */
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Warning color change when chances are low */
+.low-chances {
+  color: #D32F2F; /* More intense red for low chances */
+  font-size: 1.3rem;
+}
+
